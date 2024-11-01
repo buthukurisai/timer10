@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Digital Clock</title>
+    <title>10 Days Left</title>
     <style>
-        #clock {
+        #countdown {
             font-size: 48px;
             font-family: sans-serif;
             text-align: center;
@@ -11,17 +11,22 @@
     </style>
 </head>
 <body>
-    <div id="clock"></div>
+    <div id="countdown"></div>
 
     <script>
-        function displayTime() {
+        const targetDate = new Date("2023-11-10"); // Replace with your target date
+
+        function updateCountdown() {
             const now = new Date();
-            const timeString = now.toLocaleTimeString();
-            document.getElementById("clock").textContent = timeString;
+            const timeLeft = targetDate - now;
+
+            const daysLeft = Math.ceil(timeLeft / (1000 * 60 * 60 * 24));
+
+            document.getElementById("countdown").textContent = daysLeft + " Days Left";
         }
 
-        setInterval(displayTime, 1000);
-        displayTime();
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
     </script>
 </body>
 </html>
